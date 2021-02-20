@@ -1,29 +1,29 @@
-import nltk
-nltk.download('popular')
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
+from chatterbot.trainers import ChatterBotCorpusTrainer
+from chatterbot.response_selection import get_random_response
 
 
 # Chatbot Instance
-chatbot = ChatBot("Test")
+chatbot = ChatBot(
+    "Test",
+    logic_adapters=[
+        "chatterbot.logic.MathematicalEvaluation",
+        "chatterbot.logic.TimeLogicAdapter",
+        {
+        "import_path": "chatterbot.logic.BestMatch",
+        "response_selection_method": get_random_response ,
+        'default_response': 'I am sorry, but I do not understand.',
+        'maximum_similarity_threshold': 0.90
+        }
+        ]
+    )
 
-conversation = [
-    "Hello",
-    "Hi",
-    "Hi there!",
-    "How are you doing?",
-    "I'm doing great.",
-    "That is good to hear",
-    "Thank you.",
-    "You're welcome.",
-    "Bye",
-    "Bye"
-]
+# Train chatbot
+trainer = ChatterBotCorpusTrainer(chatbot)
+trainer.train('chatterbot.corpus.english')
 
-trainer = ListTrainer(chatbot)
-
-trainer.train(conversation)
-
+print()
 # interact with user
 userInput = ""
 while(userInput.lower() != "bye"):
