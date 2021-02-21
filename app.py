@@ -1,6 +1,8 @@
 
 from flask import Flask, render_template, request, jsonify
-from chatbot import chatbot
+from chatbot import createChatBot
+
+chatbot = createChatBot() 
 
 app = Flask(__name__, template_folder='templates')
 
