@@ -11,7 +11,6 @@ from weather import Weather
 # Chatbot Instance
 chatbot = ChatBot(
     "Test",
-    storage_adapter="chatterbot.storage.SQLStorageAdapter",
     logic_adapters=[
         "chatterbot.logic.MathematicalEvaluation",
         {
@@ -47,7 +46,7 @@ trainer.train('chatterbot.corpus.english')
 
 # ---- Flask Application --- #
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__)
 
 @app.route("/")
 def home():

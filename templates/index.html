@@ -1,6 +1,85 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <h1>Test</h1>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComfortBot</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+
+    <script>
+        let text = "";
+
+        const getResponse = async (message) => {
+            try {
+            const URL = `http://0.0.0.0:${$PORT}/get?msg=${message}`;
+            const response = await fetch(URL);
+            const JSONData = await response.json();
+            console.log(response);
+            return JSONData.response;
+            } catch (err) {
+            console.error(err.message);
+            }
+        };
+
+        async function sendMessage(){
+            // e.preventDefault()
+            appendChat(text , true);
+            let res = await getResponse(text);
+            appendChat(res , false);
+            console.log(res);
+            return false;
+        }
+        
+        function handleText(){
+            let textbox = document.getElementById('textbox');
+            text = textbox.value;
+            console.log(text);
+        }
+
+        function appendChat(message, user){
+            const list = document.querySelector('.chatlogs');
+
+            let chatItem = document.createElement("li");   // Create a <button> element
+            let divItem = document.createElement("div");
+            let imgItem = document.createElement("img");
+            let pItem = document.createElement("p");
+            pItem.setAttribute("class", "message");
+
+            if(user){
+                imgItem.setAttribute('src', "/static/images/useravatar.png");
+                divItem.setAttribute('class', "user-icon");
+                chatItem.setAttribute('class', "chat self");
+            }else {
+                imgItem.setAttribute('src', "/static/images/heartbot.png");
+                divItem.setAttribute('class', "user-icon");
+                chatItem.setAttribute('class', "chat bot");
+            }
+            pItem.appendChild(document.createTextNode(message));
+            divItem.appendChild(imgItem);
+            chatItem.appendChild(divItem);
+            chatItem.appendChild(pItem); 
+
+            console.log(chatItem);
+            list.appendChild(chatItem);
+        }
+    </script>
+</head>
+<body>
+
+    <div class="chatbox">
+        <div class="chat-header">
+            <h1>ComfortBot</h1>
+        </div>
+        <ul class="chatlogs"></ul>
+
+            <div class="chat-form" id="form">
+                <textarea onchange="handleText()" id="textbox"></textarea>
+                <button onclick='sendMessage()'>Send</button>
+            </div>
+    </div>
+
+</body>
 </html>
