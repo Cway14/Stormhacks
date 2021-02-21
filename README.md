@@ -56,4 +56,4 @@ from chatterbot.response_selection import get_random_response
 
 ---
 
-### Check out the full project:
+### Check out the full project: [Chatbot]([Donate with Google](https://donate.google.com/checkout?campaignid=6172140866961408&tab=1&hl=en-CA&authUser=0 "submission video"))
