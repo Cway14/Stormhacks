@@ -11,6 +11,7 @@ from weather import Weather
 # Chatbot Instance
 chatbot = ChatBot(
     "Test",
+    storage_adapter="chatterbot.storage.SQLStorageAdapter",
     logic_adapters=[
         "chatterbot.logic.MathematicalEvaluation",
         {
