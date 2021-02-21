@@ -4,26 +4,24 @@ from chatterbot.trainers import ChatterBotCorpusTrainer
 from chatterbot.response_selection import get_random_response
 
 
-def createChatBot():
-    # Chatbot Instance
-    chatbot = ChatBot(
-        "Test",
-        storage_adapter="chatterbot.storage.SQLStorageAdapter",
-        logic_adapters=[
-            "chatterbot.logic.MathematicalEvaluation",
-            {
-            "import_path": "chatterbot.logic.BestMatch",
-            "response_selection_method": get_random_response ,
-            'default_response': 'I am sorry, but I do not understand.',
-            'maximum_similarity_threshold': 0.90
-            }
-            ]
-        )
+# Chatbot Instance
+chatbot = ChatBot(
+    "Test",
+    storage_adapter="chatterbot.storage.SQLStorageAdapter",
+    logic_adapters=[
+        "chatterbot.logic.MathematicalEvaluation",
+        {
+        "import_path": "chatterbot.logic.BestMatch",
+        "response_selection_method": get_random_response ,
+        'default_response': 'I am sorry, but I do not understand.',
+        'maximum_similarity_threshold': 0.90
+        }
+        ]
+    )
 
-    # Train chatbot
-    trainer = ChatterBotCorpusTrainer(chatbot)
-    trainer.train('chatterbot.corpus.english')
-    return chatbot
+# Train chatbot
+trainer = ChatterBotCorpusTrainer(chatbot)
+trainer.train('chatterbot.corpus.english')
 
 # print()
 # # interact with user
