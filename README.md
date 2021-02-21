@@ -4,7 +4,7 @@
 
 ## About:
 
-This is a _**chatbot**_ application that provides tips for **snowstorms** in Texas
+This is a _**chatbot**_ application that provides tips for **snowstorms** in Texas.
 
 ---
 
