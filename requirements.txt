@@ -44,7 +44,6 @@ regex==2020.11.13
 requests==2.25.1
 six==1.15.0
 soupsieve==2.1
-SQLAlchemy==1.2.19
 sqlparse==0.4.1
 starlette==0.14.2
 toml==0.10.2
