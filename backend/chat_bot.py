@@ -2,6 +2,7 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from chatterbot.trainers import ChatterBotCorpusTrainer
 from chatterbot.response_selection import get_random_response
+from weather import Weather
 
 
 # Chatbot Instance
@@ -32,3 +33,6 @@ while(userInput.lower() != "bye"):
     userInput = input("Enter Message: ")
     response = chatbot.get_response(userInput)
     print(response)
+    userInput = userInput.lower()
+    if "weather" in userInput:
+        print(Weather("a7b37fc8fa9faed677e7e0bd192282ed").get_weather())

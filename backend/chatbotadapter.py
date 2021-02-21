@@ -9,7 +9,7 @@ class WeatherLogicAdapter(LogicAdapter):
 
     def can_process(self, statement):
         words = ['weather', 'how to beat the cold',
-                 'it is so cold', 'how to beat the weather']
+                 'it is so cold', 'how to beat the weather', 'how to keep warm']
         if any(x in statement.text for x in words):
             return True
         else:
