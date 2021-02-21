@@ -23,7 +23,8 @@ chatbot = ChatBot(
         {
             "import_path": "chatbotadapter.WeatherLogicAdapter"
         }
-    ]
+    ],
+    read_only=True
 )
 
 # Train chatbot
@@ -32,7 +33,7 @@ trainer.train('chatterbot.corpus.english')
 
 # ---- Flask Application --- #
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates")
 
 @app.route("/")
 def home():
