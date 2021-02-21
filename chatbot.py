@@ -23,10 +23,10 @@ chatbot = ChatBot(
 trainer = ChatterBotCorpusTrainer(chatbot)
 trainer.train('chatterbot.corpus.english')
 
-print()
-# interact with user
-userInput = ""
-while(userInput.lower() != "bye"):
-    userInput = input("Enter Message: ")
-    response = chatbot.get_response(userInput)
-    print(response)
+# print()
+# # interact with user
+# userInput = ""
+# while(userInput.lower() != "bye"):
+#     userInput = input("Enter Message: ")
+#     response = chatbot.get_response(userInput)
+#     print(response)
