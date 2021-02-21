@@ -56,4 +56,4 @@ from chatterbot.response_selection import get_random_response
 
 ---
 
-### Check out the full project: [Chatbot](https://www.youtube.com/watch?v=SpXi3tlyJEs&feature=youtu.be "submission video")
+### Check out the full project: [ComfortBot](https://www.youtube.com/watch?v=SpXi3tlyJEs&feature=youtu.be "submission video")
