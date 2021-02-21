@@ -10,19 +10,22 @@ chatbot = ChatBot(
     logic_adapters=[
         "chatterbot.logic.MathematicalEvaluation",
         {
-        "import_path": "chatterbot.logic.BestMatch",
-        "response_selection_method": get_random_response ,
-        'default_response': 'I am sorry, but I do not understand.',
-        'maximum_similarity_threshold': 0.90
+            "import_path": "chatterbot.logic.BestMatch",
+            "response_selection_method": get_random_response,
+            'default_response': 'I am sorry, but I do not understand.',
+            'maximum_similarity_threshold': 0.90
+        },
+        {
+            "import_path": "chatbotadapter.WeatherLogicAdapter"
         }
-        ]
-    )
+    ]
+)
 
 # Train chatbot
 trainer = ChatterBotCorpusTrainer(chatbot)
 trainer.train('chatterbot.corpus.english')
 
-print()
+
 # interact with user
 userInput = ""
 while(userInput.lower() != "bye"):
