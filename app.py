@@ -11,6 +11,7 @@ from weather import Weather
 # Chatbot Instance
 chatbot = ChatBot(
     "Test",
+    storage_adapter="chatterbot.storage.SQLStorageAdapter",
     logic_adapters=[
         "chatterbot.logic.MathematicalEvaluation",
         {
@@ -28,21 +29,6 @@ chatbot = ChatBot(
 # Train chatbot
 trainer = ChatterBotCorpusTrainer(chatbot)
 trainer.train('chatterbot.corpus.english')
-
-
-# interact with user
-# userInput = ""
-# while(userInput.lower() != "bye"):
-#     userInput = input("Enter Message: ")
-#     response = chatbot.get_response(userInput)
-#     print(response)
-#     userInput = userInput.lower()
-#     if "weather" in userInput:
-#         print(Weather("a7b37fc8fa9faed677e7e0bd192282ed").get_weather())
-
-# # Train chatbot
-# trainer = ChatterBotCorpusTrainer(chatbot)
-# trainer.train('chatterbot.corpus.english')
 
 # ---- Flask Application --- #
 
