@@ -7,8 +7,10 @@ from chatterbot.response_selection import get_random_response
 # Chatbot Instance
 chatbot = ChatBot(
     "Test",
+    storage_adapter="chatterbot.storage.SQLStorageAdapter",
     logic_adapters=[
         "chatterbot.logic.MathematicalEvaluation",
+        "chatterbot.logic.TimeLogicAdapter",
         {
         "import_path": "chatterbot.logic.BestMatch",
         "response_selection_method": get_random_response ,
